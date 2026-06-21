@@ -1,16 +1,28 @@
 'use client'
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { HiDocument } from 'react-icons/hi'
 import { BsWhatsapp } from 'react-icons/bs'
 import styles from './page.module.scss'
 import projetos from '@/data/projetos.json'
 import BaseLayout from '@/components/BaseLayout'
-import SwiperCoverflow from '@/components/swiper'
-import FadeImageSlider from '@/components/swiperFadeEffect'
-import TextPageInicial from '@/components/textPageInicial'
 import Card from '@/components/card'
 import ModalComponent from '@/components/modal'
+
+// ssr: false elimina hydration mismatch do Swiper e framer-motion no servidor
+const FadeImageSlider = dynamic(() => import('@/components/swiperFadeEffect'), {
+  ssr: false,
+  loading: () => <div className={styles.photoPlaceholder} />,
+})
+const SwiperCoverflow = dynamic(() => import('@/components/swiper'), {
+  ssr: false,
+  loading: () => <div className={styles.swiperPlaceholder} />,
+})
+const TextPageInicial = dynamic(() => import('@/components/textPageInicial'), {
+  ssr: false,
+  loading: () => <span>Full Stack Developer</span>,
+})
 
 interface CardModalProps {
   title: string
@@ -20,21 +32,7 @@ interface CardModalProps {
   url: string
 }
 
-// Hero entrance – stagger children
-const heroTextVars = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
-}
-const heroItemVars = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
-}
-const heroPhotoVars = {
-  hidden: { opacity: 0, scale: 0.92 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] as const } },
-}
-
-// Scroll-triggered reveal
+// Scroll-triggered reveal (below the fold — SSR flash doesn't matter)
 const revealVars = {
   hidden: { opacity: 0, y: 44 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
@@ -83,33 +81,28 @@ export default function Home() {
           <div className={styles.orb3} />
         </div>
 
-        {/* ── HERO ── */}
+        {/* ── HERO — CSS animations (SSR-safe, no framer-motion initial=hidden) ── */}
         <section className={styles.hero}>
           <div className={styles.heroInner}>
             {/* LEFT: Text content */}
-            <motion.div
-              className={styles.heroText}
-              variants={heroTextVars}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.div variants={heroItemVars} className={styles.heroBadge}>
+            <div className={styles.heroText}>
+              <div className={styles.heroBadge}>
                 <span className={styles.badgeDot} />
                 <span>Disponível para oportunidades</span>
-              </motion.div>
+              </div>
 
-              <motion.h1 variants={heroItemVars} className={styles.heroName}>
+              <h1 className={styles.heroName}>
                 Guilherme<br />
                 <span className={styles.nameAccent}>Duarte</span>
-              </motion.h1>
+              </h1>
 
-              <motion.div variants={heroItemVars} className={styles.heroRole}>
+              <div className={styles.heroRole}>
                 <span className={styles.roleTag}>&lt;</span>
                 <TextPageInicial time={3500} />
                 <span className={styles.roleTag}>&nbsp;/&gt;</span>
-              </motion.div>
+              </div>
 
-              <motion.div variants={heroItemVars} className={styles.heroStats}>
+              <div className={styles.heroStats}>
                 <div className={styles.stat}>
                   <span className={styles.statNum}>3+</span>
                   <span className={styles.statLabel}>Anos de<br />Experiência</span>
@@ -124,9 +117,9 @@ export default function Home() {
                   <span className={styles.statNum}>12+</span>
                   <span className={styles.statLabel}>Tecnologias<br />Dominadas</span>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div variants={heroItemVars} className={styles.heroCta}>
+              <div className={styles.heroCta}>
                 <a href="/curriculo">
                   <button className={styles.btnOutline}>
                     <HiDocument /> Currículo
@@ -137,21 +130,16 @@ export default function Home() {
                     <BsWhatsapp /> Entrar em Contato
                   </button>
                 </a>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
 
             {/* RIGHT: Photo */}
-            <motion.div
-              className={styles.heroPhotoWrap}
-              variants={heroPhotoVars}
-              initial="hidden"
-              animate="visible"
-            >
+            <div className={styles.heroPhotoWrap}>
               <div className={styles.heroPhoto}>
                 <FadeImageSlider />
               </div>
               <div className={styles.photoGlow} aria-hidden="true" />
-            </motion.div>
+            </div>
           </div>
 
           <div className={styles.scrollIndicator}>

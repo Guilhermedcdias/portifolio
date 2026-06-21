@@ -57,6 +57,17 @@
   80%       { transform: translate(14px, -9px) scale(0.94); }
 }
 
+/* ── Hero entrance animations (CSS — SSR-safe, no JS dependency) ── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heroFadeScale {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
 /* ── Hero ── */
 .hero {
   position: relative;
@@ -66,7 +77,6 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  overflow: hidden;
 }
 
 .heroInner {
@@ -99,6 +109,7 @@
   font-size: 0.75rem;
   color: var(--accent);
   width: fit-content;
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .badgeDot {
@@ -123,6 +134,7 @@
   line-height: 1.05;
   letter-spacing: -0.04em;
   color: var(--text);
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
 }
 
 .nameAccent {
@@ -139,6 +151,7 @@
   font-size: clamp(0.85rem, 1.5vw, 1.05rem);
   color: var(--text-muted);
   min-height: 1.8rem;
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
 
 .roleTag {
@@ -155,6 +168,7 @@
   padding: 1.5rem 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
 }
 
 .stat {
@@ -189,6 +203,7 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  animation: heroFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both;
 }
 
 .btnOutline {
@@ -234,9 +249,24 @@
   }
 }
 
+/* Loading placeholders (ssr:false dynamic imports) */
+.photoPlaceholder {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  background: var(--surface-2);
+  border-radius: var(--radius-lg);
+}
+
+.swiperPlaceholder {
+  min-height: 280px;
+  background: transparent;
+}
+
 /* Photo area */
 .heroPhotoWrap {
   position: relative;
+  animation: heroFadeScale 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
 }
 
 .heroPhoto {
