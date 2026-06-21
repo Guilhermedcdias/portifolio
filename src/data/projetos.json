@@ -22,9 +22,9 @@
     },
     "4": {
         "title": "API - 4º Semestre",
-        "Projeto": "TypeScript, Vue.js, Node.js, MongoDB, MySQL, Arduino.",
-        "Descricao": "NeoCode — Estações meteorológicas de baixo custo com sensores para monitorar direção e velocidade do vento, índice pluviométrico, umidade, temperatura e pressão. Os dados coletados são enviados a um servidor e exibidos em portal com dashboards, relatórios e sistema de alertas. Projeto educacional voltado a alunos do ensino médio para aprendizagem baseada em problemas.",
-        "Participacao": "Atuei como desenvolvedor Full Stack na API do 4° semestre de Desenvolvimento de Software Multiplataforma na Fatec SJC. Trabalhei no desenvolvimento do frontend em TypeScript, na integração com os backends que recebem dados dos sensores via Arduino, e na estruturação dos dashboards de monitoramento. O projeto envolveu múltiplos backends com diferentes responsabilidades, persistência em MongoDB e MySQL, pipeline de CI/CD e deploy automático.",
+        "Projeto": "TypeScript, Node.js, MongoDB, MySQL, Arduino.",
+        "Descricao": "NeoCode — Estações meteorológicas de baixo custo com sensores para monitorar direção e velocidade do vento, índice pluviométrico, umidade, temperatura e pressão. Os dados são enviados a um servidor e exibidos em portal com dashboards, relatórios e sistema de alertas. Projeto educacional voltado a alunos do ensino médio para aprendizagem baseada em problemas.",
+        "Participacao": "Atuei como desenvolvedor Full Stack na API do 4° semestre de Desenvolvimento de Software Multiplataforma na Fatec SJC. Trabalhei no frontend em TypeScript, na integração com os backends que recebem dados dos sensores via Arduino e na estruturação dos dashboards de monitoramento. O projeto envolveu múltiplos backends com diferentes responsabilidades, persistência em MongoDB e MySQL, pipeline de CI/CD e deploy automático.",
         "url": "https://bitbucket.org/neocode2023/documentacao/src/main/"
     },
     "5": {
@@ -34,77 +34,77 @@
         "Participacao": "Atuei como desenvolvedor Full Stack na API do 5° semestre de Desenvolvimento de Software Multiplataforma na Fatec SJC. Contribuí no desenvolvimento do aplicativo mobile em React Native, integração com a API de geolocalização e na construção do backend que recebe e processa as imagens enviadas em campo. A experiência envolveu trabalho com Python para o módulo de análise de imagens por IA, além de integração com banco de dados MySQL para persistência dos dados coletados pelas armadilhas.",
         "url": "https://github.com/AgroVision-Fatec/documentacao"
     },
-    "5": {
+    "6": {
         "title": "API - 6º Semestre",
         "Projeto": "React, Node.js, TypeScript, JavaScript, MySQL, Python.",
         "Descricao": "WhatsCode — Sistema web de controle de acesso a travas de portas com chatbot integrado. Inclui painel de administração centralizado, autenticação multifator, registro de eventos de acesso, controle dinâmico de permissões em tempo real e integração com dispositivos físicos (fechaduras eletrônicas) via API.",
         "Participacao": "Participei como desenvolvedor na API do 6° semestre de Desenvolvimento de Software Multiplataforma na Fatec SJC. Trabalhei no backend em Node.js com JavaScript, na interface em React e na configuração do banco de dados MySQL. Colaborei também no desenvolvimento do chatbot em Python, que automatiza interações de controle de acesso. Foi o projeto mais completo do curso, unindo segurança, automação e UX em uma única plataforma.",
         "url": "https://github.com/orgs/WhatsCode-24/repositories"
     },
-    "6": {
+    "7": {
         "title": "Pós-Graduação FIAP — Garage Management System",
         "Projeto": "NestJS, TypeScript, PostgreSQL, Docker, Terraform, HCL.",
         "Descricao": "Sistema de gestão de oficina mecânica desenvolvido na pós-graduação da FIAP, aplicando Arquitetura Hexagonal (Ports & Adapters), Domain-Driven Design (DDD) e CQRS. Composto por microsserviços independentes: autenticação, cobrança, execução de serviços e ordens de serviço, com infraestrutura como código (Terraform/HCL) e 100+ testes automatizados.",
         "Participacao": "Desenvolvi o sistema como parte da pós-graduação em Software Architecture na FIAP. Apliquei na prática os conceitos de arquitetura hexagonal com NestJS e TypeORM, separando claramente as camadas de domínio, aplicação e infraestrutura. Fui responsável pela modelagem dos microsserviços, configuração da infraestrutura na nuvem com Terraform e pela implementação do módulo de clientes com cobertura total de testes. O projeto consolidou meu conhecimento em arquitetura limpa e desenvolvimento orientado a domínio.",
         "url": "https://github.com/orgs/12SOAT-Workshop-FIAP/repositories"
     },
-    "7": {
+    "8": {
         "title": "Landing Page — Escritório de Advocacia",
         "Projeto": "TypeScript, React, Next.js, CSS.",
         "Descricao": "Landing page institucional para escritório de advocacia especializado em Direito Trabalhista e do Consumidor. Projeto em produção, com foco em conversão de clientes, apresentação dos serviços, CTAs estratégicos e performance de carregamento.",
         "Participacao": "Desenvolvi do zero a landing page como projeto freelance, desde o levantamento de requisitos com o cliente até o deploy em produção. Trabalhei com Next.js e TypeScript para garantir performance e SEO adequados, aplicando boas práticas de UI e UX para maximizar a conversão de visitantes em potenciais clientes do escritório.",
         "url": "https://github.com/Guilhermedcdias/advocacia-lp"
     },
-    "8": {
+    "9": {
         "title": "Petlove — Plataforma Pet",
         "Projeto": "TypeScript, Next.js, CSS.",
         "Descricao": "Aplicação web voltada para o universo pet, desenvolvida com Next.js e TypeScript. Interface moderna para catálogo e gerenciamento de serviços e produtos para animais de estimação, com foco em experiência do usuário e performance.",
         "Participacao": "Projeto desenvolvido individualmente como prática de desenvolvimento frontend moderno. Utilizei Next.js 14 com App Router e TypeScript para construir a interface, aplicando boas práticas de componentização, tipagem estrita e organização de código escalável.",
         "url": "https://github.com/Guilhermedcdias/petlove"
     },
-    "9": {
+    "10": {
         "title": "Atlantis Water Park — Técnicas de Programação II",
         "Projeto": "TypeScript.",
         "Descricao": "Série de cinco atividades práticas da disciplina de Técnicas de Programação II na Fatec SJC, implementando um sistema de parque aquático com TypeScript. Abordou orientação a objetos, herança, polimorfismo, encapsulamento e padrões de projeto aplicados em cenários reais.",
         "Participacao": "Desenvolvi as cinco atividades sequenciais evoluindo o sistema a cada entrega, consolidando os conceitos de POO em TypeScript ensinados em sala. Cada atividade adicionava novos requisitos ao sistema — desde modelagem de entidades até lógica de negócios e regras de acesso — o que exercitou a habilidade de evoluir código sem quebrar o que já existia.",
         "url": "https://github.com/orgs/AtlantisTeamm/repositories"
     },
-    "10": {
+    "11": {
         "title": "Autobots — Microsserviços Java",
         "Projeto": "Java, Spring Boot.",
         "Descricao": "Série de atividades práticas de Desenvolvimento Web 1 na Fatec SJC, implementando microsserviços em Java com Spring Boot. As atividades evoluíram progressivamente do conceito de REST APIs simples até comunicação entre serviços, persistência e padrões arquiteturais de microsserviços.",
         "Participacao": "Desenvolvi as atividades aplicando Java com Spring Boot para construção de APIs REST, explorando conceitos como injeção de dependência, camadas de serviço, repositórios JPA e integração entre microsserviços. A progressão das atividades permitiu consolidar na prática a arquitetura de microsserviços que utilizei em projetos mais complexos durante o curso.",
         "url": "https://github.com/orgs/autobotsteam/repositories"
     },
-    "11": {
+    "12": {
         "title": "Resultado das Lotéricas",
         "Projeto": "TypeScript, React, Styled Components.",
         "Descricao": "Aplicação React que consome a API de resultados das lotéricas da Caixa Econômica Federal e exibe os sorteios de forma visual e interativa, utilizando Styled Components para estilização dinâmica. Desenvolvido durante as aulas da Fatec SJC.",
         "Participacao": "Projeto individual desenvolvido durante as aulas na Fatec para praticar consumo de APIs externas com React e TypeScript. Implementei a integração com a API pública da Caixa, o tratamento dos dados retornados e a apresentação dos resultados utilizando Styled Components — meu primeiro contato com CSS-in-JS.",
         "url": "https://github.com/Guilhermedcdias/Resultado-lotericas"
     },
-    "12": {
+    "13": {
         "title": "Teste A/B — UX Fatec",
         "Projeto": "HTML, JavaScript, CSS.",
         "Descricao": "Experimento de Teste A/B desenvolvido para a disciplina de Experiência do Usuário na Fatec SJC. Implementa duas variações de interface para análise comparativa de comportamento do usuário, aplicando conceitos de UX Research e métricas de usabilidade.",
         "Participacao": "Projeto prático desenvolvido sob orientação do professor Fabricio na disciplina de UX. Implementei as variações de layout e os mecanismos de coleta de dados para comparação entre as versões A e B, aprendendo na prática como decisões de design afetam o comportamento do usuário.",
         "url": "https://github.com/Guilhermedcdias/front-testab"
     },
-    "13": {
+    "14": {
         "title": "TDD — Calculadora de Salário",
         "Projeto": "TypeScript, Jest.",
         "Descricao": "Exercício prático de Test-Driven Development (TDD): calculadora de salário para diferentes cargos e sistema de validação de dados de pessoas. Desenvolvido com TypeScript e Jest, seguindo o ciclo Red-Green-Refactor para garantir cobertura de testes desde o início.",
         "Participacao": "Projeto desenvolvido para aprofundar o conhecimento em TDD e testes automatizados com Jest. Escrevi os testes antes da implementação, seguindo a metodologia TDD, o que me permitiu entender na prática como testes guiam o design do código e previnem regressões.",
         "url": "https://github.com/Guilhermedcdias/TDD"
     },
-    "14": {
+    "15": {
         "title": "PLN — Processamento de Linguagem Natural",
         "Projeto": "Python, NLTK, Matplotlib.",
         "Descricao": "Algoritmos de Processamento de Linguagem Natural (PLN) desenvolvidos em Python utilizando as bibliotecas NLTK e Matplotlib. Implementa análise de frequência de palavras, tokenização e visualização gráfica dos resultados de textos processados.",
         "Participacao": "Projeto desenvolvido para explorar conceitos de NLP com Python. Utilizei NLTK para tokenização, remoção de stopwords e análise morfológica, e Matplotlib para gerar gráficos de frequência. Foi meu primeiro contato prático com processamento de texto e análise de dados linguísticos.",
         "url": "https://github.com/Guilhermedcdias/pln"
     },
-    "15": {
+    "16": {
         "title": "CRUD MVC — PHP e MySQL",
         "Projeto": "PHP, MySQL, HTML, CSS.",
         "Descricao": "CRUD completo utilizando a arquitetura MVC com PHP e MySQL. Implementa operações de criação, leitura, atualização e exclusão de registros com separação clara entre Model, View e Controller, configuração de mod_rewrite para URLs amigáveis e compatibilidade com XAMPP e NGINX.",
