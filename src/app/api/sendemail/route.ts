@@ -1,6 +1,4 @@
-// pages/api/sendEmail.js
 import nodemailer from 'nodemailer';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 
 

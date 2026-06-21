@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    // habilitando imagens
     images: {
-        domains: ['storage.googleapis.com', 'img.icons8.com'],
+        remotePatterns: [
+            { protocol: 'https', hostname: 'storage.googleapis.com' },
+            { protocol: 'https', hostname: 'img.icons8.com' },
+        ],
     },
 }
 

@@ -1,4 +1,4 @@
-import BaseLayout from '../components/BaseLayout';
+import BaseLayout from '@/components/BaseLayout';
 import styles from './page.module.scss';
 import { FaBuilding, FaCalendarAlt } from "react-icons/fa";
 import { PiOfficeChairFill } from "react-icons/pi";
@@ -17,6 +17,7 @@ export default function Curriculo() {
                             <h5>(12) 97407-7685</h5>
                         </div>
                         <div className={styles.parte2}>
+                            <span className={styles.eyebrow}>// sobre</span>
                             <h3 className={`${styles.textoPreto} ${styles.bold}`}>Resumo Profissional</h3>
                             <h5 className={`${styles.justificar} ${styles.textoPreto}`}>
                                 <p>Sou um desenvolvedor de software com formação técnica em Desenvolvimento de Sistemas e atualmente cursando o quarto semestre de Desenvolvimento de Software Multiplataforma. Minha expertise abrange uma gama diversificada de linguagens de programação, incluindo TypeScript, JavaScript, Java, Python, MySQL, PHP, HTML, CSS, além de ter conhecimentos básicos em C aplicado em Arduino e ESP32.</p>
@@ -27,6 +28,7 @@ export default function Curriculo() {
 
                         </div>
                         <div className={styles.parte3}>
+                            <span className={styles.eyebrow}>// hard-skills</span>
                             <h3 className={`${styles.textoPreto} ${styles.bold}`}>Hard Skills</h3>
                             <div className={styles.row}>
                                 <div className={styles.direita}>
@@ -164,6 +166,7 @@ export default function Curriculo() {
                             </div>
                         </div>
                         <div className={styles.parte5}>
+                            <span className={styles.eyebrow}>// experiência</span>
                             <h3 className={`${styles.textoPreto} ${styles.bold}`}>Experiência Profissional</h3>
                             <div className={styles.row}>
                                 <div className={styles.experiencia}>

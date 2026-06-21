@@ -11,30 +11,29 @@
   "dependencies": {
     "@hotjar/browser": "^1.0.9",
     "@popperjs/core": "^2.11.8",
-    "@react-spring/web": "^9.7.3",
-    "@types/node": "20.5.3",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
-    "axios": "^1.6.2",
+    "@react-spring/web": "^10.1.1",
+    "@types/node": "^26.0.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "axios": "^1.18.0",
     "bootstrap": "^5.3.1",
     "cors": "^2.8.5",
-    "framer-motion": "^10.16.1",
-    "next": "13.4.19",
+    "framer-motion": "^12.40.0",
+    "next": "16.2.9",
     "nodemailer": "^6.9.7",
-    "react": "18.2.0",
-    "react-bootstrap": "^2.8.0",
-    "react-dom": "18.2.0",
-    "react-icons": "^4.11.0",
+    "react": "^19.2.7",
+    "react-bootstrap": "^2.10.10",
+    "react-dom": "^19.2.7",
+    "react-icons": "^5.6.0",
     "react-popper": "^2.3.0",
-    "react-toastify": "^9.1.3",
-    "sass": "^1.66.1",
-    "swiper": "^11.0.4",
-    "typeit-react": "^2.6.4",
-    "typescript": "5.1.6"
+    "react-toastify": "^11.1.0",
+    "sass": "^1.101.0",
+    "swiper": "^12.2.0",
+    "typeit-react": "^2.7.8",
+    "typescript": "^6.0.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
-    "@types/nodemailer": "^6.4.14",
-    "@types/swiper": "^6.0.0"
+    "@types/nodemailer": "^6.4.14"
   }
 }

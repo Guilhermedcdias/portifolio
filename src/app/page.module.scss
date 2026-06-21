@@ -1,890 +1,461 @@
-.main {
+/* ── Ambient orbs ── */
+.orbsContainer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.orb1 {
+  position: absolute;
+  top: -8%;
+  right: -12%;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.09) 0%, transparent 65%);
+  animation: orbFloat1 14s ease-in-out infinite;
+}
+
+.orb2 {
+  position: absolute;
+  bottom: 5%;
+  left: -10%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.07) 0%, transparent 65%);
+  animation: orbFloat2 18s ease-in-out infinite;
+}
+
+.orb3 {
+  position: absolute;
+  top: 45%;
+  left: 38%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.05) 0%, transparent 65%);
+  animation: orbFloat3 11s ease-in-out infinite;
+}
+
+@keyframes orbFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(-28px, 18px) scale(1.04); }
+  66%       { transform: translate(18px, -14px) scale(0.97); }
+}
+
+@keyframes orbFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(32px, -24px) scale(1.07); }
+}
+
+@keyframes orbFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-18px, 14px) scale(1.1); }
+  80%       { transform: translate(14px, -9px) scale(0.94); }
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 115vh;
-  background-color: white;
-  margin-bottom: 20rem;
-}
-
-.carousel {
-  position: absolute;
-  top: 40%;
-  background-color: white;
-  border-radius: 50px;
+  justify-content: center;
   padding: 2rem;
-  width: 95%;
-
-  .BieneVeindo {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: nowrap;
-
-    .l1 {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      margin-left: 2rem;
-      margin-right: 2rem;
-      width: 50%;
-
-      .img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-
-        img {
-          width: 100%;
-          height: 100%;
-          // border-radius: 50%;
-        }
-      }
-    }
-
-    .l2 {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      margin-left: 2rem;
-      margin-right: 2rem;
-
-      h1 {
-        font-size: 2.4rem;
-        font-weight: 700;
-        color: #000000;
-        text-align: center;
-        // criando efeito 3d
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-        // deixando tudo maiúsculo
-        text-transform: uppercase;
-
-        span {
-          color: #a30000;
-        }
-      }
-
-      .p1 {
-        // retirando linha do after
-        font-size: 1.2rem;
-        text-transform: uppercase;
-        margin-bottom: 0;
-        padding-bottom: 0;
-
-        &:after {
-          content: '';
-          display: block;
-          width: 0;
-          height: 0;
-          background-color: #000000;
-          margin: 0 0;
-        }
-      }
-
-      .p2 {
-        // retirando linha do after
-        color: #ff0000;
-        width: 90%;
-        padding: 1rem;
-        padding-top: 1.5rem;
-        background-color: #ffffff;
-        border-radius: 1px;
-        border: #000000 solid 2px;
-
-        span {
-          color: #a30000;
-          font-size: 1.8rem;
-
-
-        }
-
-        &:after {
-          content: '';
-          display: block;
-          width: 0;
-          height: 2px;
-          background-color: #000000;
-          margin: .5rem auto;
-        }
-      }
-
-      .p3 {
-        width: 100%;
-
-        &:after {
-          content: '';
-          display: block;
-          width: 40%;
-          height: 2px;
-          background-color: #000000;
-          margin: .5rem auto;
-        }
-      }
-
-      p {
-        text-align: justify;
-        font-size: 1rem;
-        font-weight: 700;
-        color: #000000;
-        text-align: center;
-        // criando efeito 3d
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-        // deixando tudo maiúsculo
-        text-transform: none;
-
-        span {
-          font-size: 1rem;
-          font-weight: 700;
-          color: #580000;
-          text-align: center;
-          // criando efeito 3d
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-          // deixando tudo maiúsculo
-          // text-transform: uppercase;
-        }
-
-      }
-    }
-  }
-
-  p {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #000000;
-    text-align: center;
-    // criando efeito 3d
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-    // deixando tudo maiúsculo
-    text-transform: capitalize;
-
-    // criando estilização bonita para o texto, e colocando um traço embaixo
-    &:after {
-      content: '';
-      display: block;
-      width: 10%;
-      height: 2px;
-      background-color: #000000;
-      margin: .5rem auto;
-
-      // adicionando transição
-      transition: all .8s ease-in-out;
-
-      // adicionando hover
-      &:hover {
-        width: 50%;
-      }
-    }
-  }
+  overflow: hidden;
 }
 
-.btn {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 0.75fr;
+  gap: 5rem;
   align-items: center;
-  margin-bottom: 2rem;
-  flex-wrap: nowrap;
+}
 
-  button {
-    background-color: transparent;
-    border: #000000 solid 2px;
-    border-radius: 1rem;
-    padding: 15px 32px;
-    outline: none;
-    cursor: pointer;
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* Available badge */
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 194, 255, 0.06);
+  border: 1px solid rgba(0, 194, 255, 0.2);
+  border-radius: 100px;
+  padding: 0.35rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  width: fit-content;
+}
+
+.badgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.75); }
+}
+
+/* Big name */
+.heroName {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.nameAccent {
+  color: var(--accent);
+  text-shadow: 0 0 60px rgba(0, 194, 255, 0.25);
+}
+
+/* Role with code tags */
+.heroRole {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.5vw, 1.05rem);
+  color: var(--text-muted);
+  min-height: 1.8rem;
+}
+
+.roleTag {
+  color: var(--accent);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* Stats */
+.heroStats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statNum {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* CTAs */
+.heroCta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+}
+
+.btnFill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border: 1.5px solid var(--accent);
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: #000;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    background: #33CCFF;
+    box-shadow: 0 0 24px rgba(0, 194, 255, 0.4);
+  }
+}
+
+/* Photo area */
+.heroPhotoWrap {
+  position: relative;
+}
+
+.heroPhoto {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  aspect-ratio: 3 / 4;
+  box-shadow: 0 0 0 1px var(--border), 0 24px 64px rgba(0, 0, 0, 0.6);
+
+  :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  :global(.swiper),
+  :global(.swiper-wrapper),
+  :global(.swiper-slide) {
+    height: 100%;
+  }
+}
+
+.photoGlow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(circle, rgba(0, 194, 255, 0.1) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scroll indicator */
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-faint);
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  z-index: 1;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollAnim 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollAnim {
+  0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+  40%  { opacity: 1; transform: scaleY(1); }
+  100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ── Projects section ── */
+.projects {
+  padding: 6rem 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.projectsInner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionHeader {
+  margin-bottom: 3rem;
+}
+
+.sectionEyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .heroPhotoWrap {
+    order: -1;
+  }
+
+  .heroPhoto {
+    aspect-ratio: 16 / 9;
+    max-height: 260px;
+  }
+
+  .heroName {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 5.5rem 1.25rem 2rem;
+    justify-content: flex-start;
+    padding-top: 5rem;
+  }
+
+  .heroStats {
+    gap: 1.25rem;
+  }
+
+  .statNum {
     font-size: 1.5rem;
-    font-weight: 700;
-    color: #000000;
-    font-size: 1rem;
-
-    svg {
-      margin-right: .2rem;
-    }
-
-    &:hover {
-      background-color: #580000;
-      color: #ffffff;
-    }
-  }
-}
-
-@media (max-width: 1350px) {
-  .carousel {
-    position: absolute;
-    top: 40%;
-    background-color: white;
-    border-radius: 50px;
-    padding: 2rem;
-    width: 95%;
-
-    .BieneVeindo {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      flex-wrap: nowrap;
-
-      .l1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
-        width: 50%;
-
-        .img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-
-          img {
-            width: 100%;
-            height: 100%;
-            // border-radius: 50%;
-          }
-        }
-      }
-
-      .l2 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
-
-        h1 {
-          font-size: 2.4rem;
-          font-weight: 700;
-          color: #000000;
-          text-align: center;
-          // criando efeito 3d
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-          // deixando tudo maiúsculo
-          text-transform: uppercase;
-
-          span {
-            color: #a30000;
-          }
-        }
-
-        .p1 {
-          // retirando linha do after
-          font-size: 1.2rem;
-          text-transform: uppercase;
-          margin-bottom: 0;
-          padding-bottom: 0;
-
-          &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 0;
-            background-color: #000000;
-            margin: 0 0;
-          }
-        }
-
-        .p2 {
-          // retirando linha do after
-          color: #ff0000;
-          width: 90%;
-          padding: 1rem;
-          padding-top: 1.5rem;
-          background-color: #ffffff;
-          border-radius: 1px;
-          border: #000000 solid 2px;
-
-          span {
-            color: #a30000;
-            font-size: 1.5rem;
-
-
-          }
-
-          &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background-color: #000000;
-            margin: .5rem auto;
-          }
-        }
-
-        .p3 {
-          width: 100%;
-
-          &:after {
-            content: '';
-            display: block;
-            width: 40%;
-            height: 2px;
-            background-color: #000000;
-            margin: .5rem auto;
-          }
-        }
-
-        p {
-          text-align: justify;
-          font-size: 1rem;
-          font-weight: 700;
-          color: #000000;
-          text-align: center;
-          // criando efeito 3d
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-          // deixando tudo maiúsculo
-          text-transform: none;
-
-          span {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #580000;
-            text-align: center;
-            // criando efeito 3d
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-            // deixando tudo maiúsculo
-            // text-transform: uppercase;
-          }
-
-        }
-      }
-    }
-
-    p {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #000000;
-      text-align: center;
-      // criando efeito 3d
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-      // deixando tudo maiúsculo
-      text-transform: capitalize;
-
-      // criando estilização bonita para o texto, e colocando um traço embaixo
-      &:after {
-        content: '';
-        display: block;
-        width: 10%;
-        height: 2px;
-        background-color: #000000;
-        margin: .5rem auto;
-
-        // adicionando transição
-        transition: all .8s ease-in-out;
-
-        // adicionando hover
-        &:hover {
-          width: 50%;
-        }
-      }
-    }
   }
 
-  .btn {
-    width: 90%;
-    display: flex;
+  .heroCta {
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: nowrap;
 
-    button {
-      width: 60%;
-      background-color: transparent;
-      border: #000000 solid 2px;
-      border-radius: 1rem;
-      padding: 15px 32px;
-      outline: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #000000;
-      font-size: 1rem;
-      margin: 1rem;
-
-      svg {
-        margin-right: .2rem;
-      }
-
-      &:hover {
-        background-color: #580000;
-        color: #ffffff;
-      }
+    a {
+      width: 100%;
     }
-  }
-}
-
-@media (max-width: 1200px) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6rem;
-    min-height: 100vh;
-    background-color: white;
-    margin-bottom: 150vh;
-  }
-
-  .carousel {
-    position: absolute;
-    top: 40%;
-    background-color: white;
-    border-radius: 50px;
-    padding: 2rem;
-    width: 95%;
-    margin-bottom: 2rem;
-
-    .BieneVeindo {
-      display: flex;
-      flex-direction: column-reverse;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      flex-wrap: nowrap;
-
-      .l1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
-        width: 100%;
-
-        .img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-
-          img {
-            width: 100%;
-            height: 100%;
-            // border-radius: 50%;
-          }
-        }
-      }
-
-      .l2 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
-
-        h1 {
-          font-size: 2.4rem;
-          font-weight: 700;
-          color: #000000;
-          text-align: center;
-          // criando efeito 3d
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-          // deixando tudo maiúsculo
-          text-transform: uppercase;
-
-          span {
-            color: #a30000;
-          }
-        }
-
-        .p1 {
-          // retirando linha do after
-          font-size: 1.2rem;
-          text-transform: uppercase;
-          margin-bottom: 0;
-          padding-bottom: 0;
-
-          &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 0;
-            background-color: #000000;
-            margin: 0 0;
-          }
-        }
-
-        .p2 {
-          // retirando linha do after
-          color: #ff0000;
-          width: 90%;
-          padding: 1rem;
-          padding-top: 1.5rem;
-          background-color: #ffffff;
-          border-radius: 1px;
-          border: #000000 solid 2px;
-
-          span {
-            color: #a30000;
-            font-size: 1.5rem;
-
-
-          }
-
-          &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background-color: #000000;
-            margin: .5rem auto;
-          }
-        }
-
-        .p3 {
-          width: 100%;
-
-          &:after {
-            content: '';
-            display: block;
-            width: 40%;
-            height: 2px;
-            background-color: #000000;
-            margin: .5rem auto;
-          }
-        }
-
-        p {
-          text-align: justify;
-          font-size: 1rem;
-          font-weight: 700;
-          color: #000000;
-          text-align: center;
-          // criando efeito 3d
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-          // deixando tudo maiúsculo
-          text-transform: none;
-
-          span {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #580000;
-            text-align: center;
-            // criando efeito 3d
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-            // deixando tudo maiúsculo
-            // text-transform: uppercase;
-          }
-
-        }
-      }
-    }
-
-    p {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #000000;
-      text-align: center;
-      // criando efeito 3d
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-      // deixando tudo maiúsculo
-      text-transform: capitalize;
-
-      // criando estilização bonita para o texto, e colocando um traço embaixo
-      &:after {
-        content: '';
-        display: block;
-        width: 10%;
-        height: 2px;
-        background-color: #000000;
-        margin: .5rem auto;
-
-        // adicionando transição
-        transition: all .8s ease-in-out;
-
-        // adicionando hover
-        &:hover {
-          width: 50%;
-        }
-      }
-    }
-  }
-
-  .btn {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: nowrap;
-
-    button {
-      width: 60%;
-      background-color: transparent;
-      border: #000000 solid 2px;
-      border-radius: 1rem;
-      padding: 15px 32px;
-      outline: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #000000;
-      font-size: 1rem;
-      margin: 1rem;
-
-      svg {
-        margin-right: .2rem;
-      }
-
-      &:hover {
-        background-color: #580000;
-        color: #ffffff;
-      }
-    }
-  }
-}
-
-@media (max-width: 700px) {
-  .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6rem;
-    min-height: 100vh;
-    background-color: white;
-    margin-bottom: 0;
-  }
-
-  .carousel {
-    position: absolute;
-    top: 40%;
-    background-color: white;
-    border-radius: 50px;
-    padding: 2rem;
-    width: 95%;
-    margin-bottom: 2rem;
-
-    .BieneVeindo {
-      display: flex;
-      flex-direction: column-reverse;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      flex-wrap: nowrap;
-
-      .l1 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
-        width: 100%;
-
-        .img {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-
-          img {
-            width: 100%;
-            height: 100%;
-            // border-radius: 50%;
-          }
-        }
-      }
-
-      .l2 {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        margin-bottom: 2rem;
-        // margin-left: 2rem;
-        // margin-right: 2rem;
-
-        h1 {
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: #000000;
-          text-align: center;
-          // criando efeito 3d
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-          // deixando tudo maiúsculo
-          text-transform: uppercase;
-
-          &::after {
-            content: '';
-            display: block;
-            width: 40%;
-            height: 2px;
-            background-color: #000000;
-            margin: 2rem auto;
-          }
-
-          span {
-            color: #a30000;
-          }
-        }
-
-        .p1 {
-          // retirando linha do after
-          font-size: .9rem;
-          text-transform: uppercase;
-          margin-bottom: 0;
-          padding-bottom: 0;
-
-          &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 0;
-            background-color: #000000;
-            margin: 0 0;
-          }
-        }
-
-        .p2 {
-          // retirando linha do after
-          color: #ff0000;
-          width: 100%;
-          padding: 0;
-          padding-top: 0;
-          background-color: #ffffff;
-          border-radius: 1px;
-          border: none;
-          height: 70px;
-          padding-top: .5rem;
-
-          span {
-            color: #a30000;
-            font-size: 1.2rem;
-
-
-          }
-
-          &:after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background-color: #000000;
-            margin: .5rem auto;
-          }
-        }
-
-        .p3 {
-          width: 100%;
-
-          &:after {
-            content: '';
-            display: block;
-            width: 40%;
-            height: 2px;
-            background-color: #000000;
-            margin: .5rem auto;
-          }
-        }
-
-        p {
-          text-align: justify;
-          font-size: 1rem;
-          font-weight: 700;
-          color: #000000;
-          text-align: center;
-          // criando efeito 3d
-          text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-          // deixando tudo maiúsculo
-          text-transform: none;
-
-          span {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #580000;
-            text-align: center;
-            // criando efeito 3d
-            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-            // deixando tudo maiúsculo
-            // text-transform: uppercase;
-          }
-
-        }
-      }
-    }
-
-    p {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #000000;
-      text-align: center;
-      // criando efeito 3d
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-      // deixando tudo maiúsculo
-      text-transform: capitalize;
-
-      // criando estilização bonita para o texto, e colocando um traço embaixo
-      &:after {
-        content: '';
-        display: block;
-        width: 10%;
-        height: 2px;
-        background-color: #000000;
-        margin: .5rem auto;
-
-        // adicionando transição
-        transition: all .8s ease-in-out;
-
-        // adicionando hover
-        &:hover {
-          width: 50%;
-        }
-      }
-    }
-  }
-
-  .btn {
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    margin-bottom: 2rem;
-    flex-wrap: nowrap;
 
     button {
       width: 100%;
-      background-color: transparent;
-      border: #000000 solid 2px;
-      border-radius: 1rem;
-      padding: 15px 32px;
-      outline: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #000000;
-      font-size: 1rem;
-      margin: 1rem;
-
-      svg {
-        margin-right: .2rem;
-      }
-
-      &:hover {
-        background-color: #580000;
-        color: #ffffff;
-      }
+      justify-content: center;
     }
+  }
+
+  .projects {
+    padding: 3rem 1.25rem;
+  }
+
+  .scrollIndicator {
+    display: none;
+  }
+}
+
+/* ── About / Tech Stack section ── */
+.about {
+  padding: 6rem 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.aboutInner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.aboutLeft,
+.aboutRight {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.aboutText {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.techChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.38rem 0.85rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  cursor: default;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-glow);
+  }
+}
+
+@media (max-width: 900px) {
+  .aboutGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 3rem 1.25rem;
   }
 }

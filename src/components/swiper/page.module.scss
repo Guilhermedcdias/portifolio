@@ -1,0 +1,9 @@
+:global(.swiper-pagination-bullet) {
+    background: var(--text-faint);
+    opacity: 1;
+}
+
+:global(.swiper-pagination-bullet-active) {
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(0, 194, 255, 0.5);
+}

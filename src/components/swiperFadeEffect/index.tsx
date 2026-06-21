@@ -2,6 +2,7 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import 'swiper/css/effect-fade';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import Image from 'next/image';
 
@@ -21,6 +22,7 @@ const FadeImageSlider: React.FC = () => {
     return (
         <Swiper
             modules={[Autoplay, EffectFade]}
+            effect="fade"
             spaceBetween={30}
             slidesPerView={1}
             autoplay={{
@@ -32,7 +34,7 @@ const FadeImageSlider: React.FC = () => {
         >
             {imagens.map((imagem, index) => (
                 <SwiperSlide key={index}>
-                    <Image src={imagem} alt={`Slide ${index}`} width={1280} height={1440}/>
+                    <Image src={imagem} alt={`Slide ${index}`} width={1280} height={1440} priority={index === 0} />
                 </SwiperSlide>
             ))}
         </Swiper>

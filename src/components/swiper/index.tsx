@@ -1,7 +1,8 @@
 'use client'
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import './page.module.scss';
 
 // Tipagem para as props do seu carrossel, se necessário
 type SwiperCoverflowProps = {

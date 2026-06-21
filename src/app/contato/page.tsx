@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import BaseLayout from "../components/BaseLayout";
+import BaseLayout from "@/components/BaseLayout";
 import styles from './page.module.scss';
 import { toast } from 'react-toastify';
 import axios from "axios";
@@ -21,7 +21,7 @@ export default function Contato() {
             mensagem: mensagem
         });
 
-        const data = await response.data();
+        const data = response.data;
 
         if (response.status === 200) {
             toast.success(data.message);
@@ -57,7 +57,9 @@ export default function Contato() {
             <div className={styles.main}>
                 <div className={styles.divPrincipal}>
                     <div className={styles.div}>
+                        <span className={styles.eyebrow}>// contato</span>
                         <h1 className={styles.textCenter}>Fale Comigo</h1>
+                        <p className={styles.subtitle}>Preencha o formulário abaixo ou me chame no WhatsApp.</p>
                     </div>
                     <div className={styles.div}>
                         {/* formulario com nome, email, telefone, assunto e mensagem */}
