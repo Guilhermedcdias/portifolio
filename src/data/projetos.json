@@ -105,6 +105,13 @@
         "url": "https://github.com/Guilhermedcdias/pln"
     },
     "16": {
+        "title": "Hackathon FIAP — ArchLens",
+        "Projeto": "TypeScript, AWS Lambda, EventBridge, SQS, S3, DynamoDB, Terraform, Serverless Framework, Claude Vision, Claude LLM.",
+        "Descricao": "ArchLens — Plataforma serverless de análise automática de diagramas de arquitetura de software. O usuário faz upload de um diagrama (PNG, PDF, JPEG) que é processado por um pipeline orientado a eventos com 5 microsserviços: extração de componentes via Claude Vision, análise de grafo (ciclos, PageRank, bottlenecks), interpretação semântica com Claude LLM, geração de relatório HTML com score de qualidade e rastreamento de status em tempo real.",
+        "Participacao": "Desenvolvi o projeto no Hackathon da FIAP durante a pós-graduação em Software Architecture. Fui responsável pela arquitetura serverless do pipeline orientado a eventos com AWS EventBridge e SQS, pela integração com Claude Vision e Claude LLM via Bedrock para análise dos diagramas, e pela infraestrutura como código com Terraform. O projeto combinou visão computacional, algoritmos de grafo e LLMs em um produto funcional entregue no prazo do hackathon.",
+        "url": "https://github.com/12SOAT-Workshop-FIAP/archlens"
+    },
+    "17": {
         "title": "CRUD MVC — PHP e MySQL",
         "Projeto": "PHP, MySQL, HTML, CSS.",
         "Descricao": "CRUD completo utilizando a arquitetura MVC com PHP e MySQL. Implementa operações de criação, leitura, atualização e exclusão de registros com separação clara entre Model, View e Controller, configuração de mod_rewrite para URLs amigáveis e compatibilidade com XAMPP e NGINX.",
