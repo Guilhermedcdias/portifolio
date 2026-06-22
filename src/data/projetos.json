@@ -49,67 +49,67 @@
         "url": "https://github.com/orgs/12SOAT-Workshop-FIAP/repositories"
     },
     "8": {
+        "title": "Hackathon FIAP — ArchLens",
+        "Projeto": "TypeScript, AWS Lambda, EventBridge, SQS, S3, DynamoDB, Terraform, Serverless Framework, Claude Vision, Claude LLM.",
+        "Descricao": "ArchLens — Plataforma serverless de análise automática de diagramas de arquitetura de software. O usuário faz upload de um diagrama (PNG, PDF, JPEG) que é processado por um pipeline orientado a eventos com 5 microsserviços: extração de componentes via Claude Vision, análise de grafo (ciclos, PageRank, bottlenecks), interpretação semântica com Claude LLM, geração de relatório HTML com score de qualidade e rastreamento de status em tempo real.",
+        "Participacao": "Desenvolvi o projeto no Hackathon da FIAP durante a pós-graduação em Software Architecture. Fui responsável pela arquitetura serverless do pipeline orientado a eventos com AWS EventBridge e SQS, pela integração com Claude Vision e Claude LLM via Bedrock para análise dos diagramas, e pela infraestrutura como código com Terraform. O projeto combinou visão computacional, algoritmos de grafo e LLMs em um produto funcional entregue no prazo do hackathon.",
+        "url": "https://github.com/12SOAT-Workshop-FIAP/archlens"
+    },
+    "9": {
         "title": "Landing Page — Escritório de Advocacia",
         "Projeto": "TypeScript, React, Next.js, CSS.",
         "Descricao": "Landing page institucional para escritório de advocacia especializado em Direito Trabalhista e do Consumidor. Projeto em produção, com foco em conversão de clientes, apresentação dos serviços, CTAs estratégicos e performance de carregamento.",
         "Participacao": "Desenvolvi do zero a landing page como projeto freelance, desde o levantamento de requisitos com o cliente até o deploy em produção. Trabalhei com Next.js e TypeScript para garantir performance e SEO adequados, aplicando boas práticas de UI e UX para maximizar a conversão de visitantes em potenciais clientes do escritório.",
         "url": "https://github.com/Guilhermedcdias/advocacia-lp"
     },
-    "9": {
+    "10": {
         "title": "Petlove — Plataforma Pet",
         "Projeto": "TypeScript, Next.js, CSS.",
         "Descricao": "Aplicação web voltada para o universo pet, desenvolvida com Next.js e TypeScript. Interface moderna para catálogo e gerenciamento de serviços e produtos para animais de estimação, com foco em experiência do usuário e performance.",
         "Participacao": "Projeto desenvolvido individualmente como prática de desenvolvimento frontend moderno. Utilizei Next.js 14 com App Router e TypeScript para construir a interface, aplicando boas práticas de componentização, tipagem estrita e organização de código escalável.",
         "url": "https://github.com/Guilhermedcdias/petlove"
     },
-    "10": {
+    "11": {
         "title": "Atlantis Water Park — Técnicas de Programação II",
         "Projeto": "TypeScript.",
         "Descricao": "Série de cinco atividades práticas da disciplina de Técnicas de Programação II na Fatec SJC, implementando um sistema de parque aquático com TypeScript. Abordou orientação a objetos, herança, polimorfismo, encapsulamento e padrões de projeto aplicados em cenários reais.",
         "Participacao": "Desenvolvi as cinco atividades sequenciais evoluindo o sistema a cada entrega, consolidando os conceitos de POO em TypeScript ensinados em sala. Cada atividade adicionava novos requisitos ao sistema — desde modelagem de entidades até lógica de negócios e regras de acesso — o que exercitou a habilidade de evoluir código sem quebrar o que já existia.",
         "url": "https://github.com/orgs/AtlantisTeamm/repositories"
     },
-    "11": {
+    "12": {
         "title": "Autobots — Microsserviços Java",
         "Projeto": "Java, Spring Boot.",
         "Descricao": "Série de atividades práticas de Desenvolvimento Web 1 na Fatec SJC, implementando microsserviços em Java com Spring Boot. As atividades evoluíram progressivamente do conceito de REST APIs simples até comunicação entre serviços, persistência e padrões arquiteturais de microsserviços.",
         "Participacao": "Desenvolvi as atividades aplicando Java com Spring Boot para construção de APIs REST, explorando conceitos como injeção de dependência, camadas de serviço, repositórios JPA e integração entre microsserviços. A progressão das atividades permitiu consolidar na prática a arquitetura de microsserviços que utilizei em projetos mais complexos durante o curso.",
         "url": "https://github.com/orgs/autobotsteam/repositories"
     },
-    "12": {
+    "13": {
         "title": "Resultado das Lotéricas",
         "Projeto": "TypeScript, React, Styled Components.",
         "Descricao": "Aplicação React que consome a API de resultados das lotéricas da Caixa Econômica Federal e exibe os sorteios de forma visual e interativa, utilizando Styled Components para estilização dinâmica. Desenvolvido durante as aulas da Fatec SJC.",
         "Participacao": "Projeto individual desenvolvido durante as aulas na Fatec para praticar consumo de APIs externas com React e TypeScript. Implementei a integração com a API pública da Caixa, o tratamento dos dados retornados e a apresentação dos resultados utilizando Styled Components — meu primeiro contato com CSS-in-JS.",
         "url": "https://github.com/Guilhermedcdias/Resultado-lotericas"
     },
-    "13": {
+    "14": {
         "title": "Teste A/B — UX Fatec",
         "Projeto": "HTML, JavaScript, CSS.",
         "Descricao": "Experimento de Teste A/B desenvolvido para a disciplina de Experiência do Usuário na Fatec SJC. Implementa duas variações de interface para análise comparativa de comportamento do usuário, aplicando conceitos de UX Research e métricas de usabilidade.",
         "Participacao": "Projeto prático desenvolvido sob orientação do professor Fabricio na disciplina de UX. Implementei as variações de layout e os mecanismos de coleta de dados para comparação entre as versões A e B, aprendendo na prática como decisões de design afetam o comportamento do usuário.",
         "url": "https://github.com/Guilhermedcdias/front-testab"
     },
-    "14": {
+    "15": {
         "title": "TDD — Calculadora de Salário",
         "Projeto": "TypeScript, Jest.",
         "Descricao": "Exercício prático de Test-Driven Development (TDD): calculadora de salário para diferentes cargos e sistema de validação de dados de pessoas. Desenvolvido com TypeScript e Jest, seguindo o ciclo Red-Green-Refactor para garantir cobertura de testes desde o início.",
         "Participacao": "Projeto desenvolvido para aprofundar o conhecimento em TDD e testes automatizados com Jest. Escrevi os testes antes da implementação, seguindo a metodologia TDD, o que me permitiu entender na prática como testes guiam o design do código e previnem regressões.",
         "url": "https://github.com/Guilhermedcdias/TDD"
     },
-    "15": {
+    "16": {
         "title": "PLN — Processamento de Linguagem Natural",
         "Projeto": "Python, NLTK, Matplotlib.",
         "Descricao": "Algoritmos de Processamento de Linguagem Natural (PLN) desenvolvidos em Python utilizando as bibliotecas NLTK e Matplotlib. Implementa análise de frequência de palavras, tokenização e visualização gráfica dos resultados de textos processados.",
         "Participacao": "Projeto desenvolvido para explorar conceitos de NLP com Python. Utilizei NLTK para tokenização, remoção de stopwords e análise morfológica, e Matplotlib para gerar gráficos de frequência. Foi meu primeiro contato prático com processamento de texto e análise de dados linguísticos.",
         "url": "https://github.com/Guilhermedcdias/pln"
-    },
-    "16": {
-        "title": "Hackathon FIAP — ArchLens",
-        "Projeto": "TypeScript, AWS Lambda, EventBridge, SQS, S3, DynamoDB, Terraform, Serverless Framework, Claude Vision, Claude LLM.",
-        "Descricao": "ArchLens — Plataforma serverless de análise automática de diagramas de arquitetura de software. O usuário faz upload de um diagrama (PNG, PDF, JPEG) que é processado por um pipeline orientado a eventos com 5 microsserviços: extração de componentes via Claude Vision, análise de grafo (ciclos, PageRank, bottlenecks), interpretação semântica com Claude LLM, geração de relatório HTML com score de qualidade e rastreamento de status em tempo real.",
-        "Participacao": "Desenvolvi o projeto no Hackathon da FIAP durante a pós-graduação em Software Architecture. Fui responsável pela arquitetura serverless do pipeline orientado a eventos com AWS EventBridge e SQS, pela integração com Claude Vision e Claude LLM via Bedrock para análise dos diagramas, e pela infraestrutura como código com Terraform. O projeto combinou visão computacional, algoritmos de grafo e LLMs em um produto funcional entregue no prazo do hackathon.",
-        "url": "https://github.com/12SOAT-Workshop-FIAP/archlens"
     },
     "17": {
         "title": "CRUD MVC — PHP e MySQL",
