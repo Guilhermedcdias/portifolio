@@ -1,12 +1,24 @@
 'use client'
 import { useCallback, useEffect, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useThree } from '@react-three/fiber'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiArrowLeft, FiArrowRight, FiExternalLink, FiX, FiHome } from 'react-icons/fi'
 import { rooms, type Room } from './rooms'
 import Hub, { roomAngle } from './Hub'
 import RoomScene from './RoomScene'
+import { buildLayout } from './layout'
 import styles from './experience.module.scss'
+
+/** Em tela retrato o FOV vertical precisa ser maior para enxergar mais de uma porta/parede. */
+function ResponsiveFov() {
+  const { camera, size } = useThree()
+  useEffect(() => {
+    const cam = camera as import('three').PerspectiveCamera
+    cam.fov = size.width / size.height < 1 ? 88 : 65
+    cam.updateProjectionMatrix()
+  }, [camera, size])
+  return null
+}
 
 const readUrl = (): string | null => {
   if (typeof window === 'undefined') return null
@@ -14,13 +26,22 @@ const readUrl = (): string | null => {
   return rooms.some(r => r.id === id) ? id : null
 }
 
-export default function Experience() {
+const hasWebGL = (): boolean => {
+  try {
+    const c = document.createElement('canvas')
+    return !!(c.getContext('webgl2') || c.getContext('webgl'))
+  } catch { return false }
+}
+
+function Museum() {
   const [roomId, setRoomId] = useState<string | null>(readUrl)
   const [entering, setEntering] = useState<string | null>(null)
   const [details, setDetails] = useState(false)
   const [lastYaw, setLastYaw] = useState(0)
+  const [focusId, setFocusId] = useState<string | null>(null)
 
   const room = rooms.find(r => r.id === roomId) ?? null
+  const focused = room && focusId ? buildLayout(room).find(a => a.id === focusId) ?? null : null
 
   useEffect(() => {
     const url = new URL(window.location.href)
@@ -28,10 +49,10 @@ export default function Experience() {
     window.history.replaceState(null, '', url)
   }, [roomId])
 
-  const goTo = useCallback((r: Room) => { setDetails(false); setRoomId(r.id); setEntering(null) }, [])
+  const goTo = useCallback((r: Room) => { setDetails(false); setFocusId(null); setRoomId(r.id); setEntering(null) }, [])
   const leave = useCallback(() => {
     if (room) setLastYaw(roomAngle(room.index))
-    setDetails(false); setRoomId(null); setEntering(null)
+    setDetails(false); setFocusId(null); setRoomId(null); setEntering(null)
   }, [room])
   const step = useCallback((dir: 1 | -1) => {
     if (!room) return
@@ -41,23 +62,31 @@ export default function Experience() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (!room) return
-      if (e.key === 'Escape') { details ? setDetails(false) : leave() }
+      if (e.key === 'Escape') { if (details) setDetails(false); else if (focusId) setFocusId(null); else leave() }
       if (e.key === 'ArrowRight' && !details) step(1)
       if (e.key === 'ArrowLeft' && !details) step(-1)
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [room, details, leave, step])
+  }, [room, details, focusId, leave, step])
 
   return (
     <div className={styles.stage}>
       <Canvas
-        dpr={[1, 2]}
+        dpr={[1, 1.5]}
         camera={{ fov: 65, near: 0.1, far: 80, position: [0, 1.7, 0] }}
+        shadows
         gl={{ antialias: true }}
       >
+        <ResponsiveFov />
         {room
-          ? <RoomScene room={room} onOpenDetails={() => setDetails(true)} />
+          ? <RoomScene
+              room={room}
+              focusId={focusId}
+              onFocus={(id) => (id === 'mural' ? setDetails(true) : setFocusId(id))}
+              onOpenDetails={() => setDetails(true)}
+              onLeave={leave}
+            />
           : <Hub initialYaw={lastYaw} enteringId={entering} onPick={(r) => setEntering(r.id)} onArrived={goTo} />}
       </Canvas>
 
@@ -72,9 +101,10 @@ export default function Experience() {
 
       {!room && (
         <div className={styles.hubHud}>
-          <span className={styles.eyebrow}>// modo explorar</span>
-          <h1>Saguão do Portfólio</h1>
-          <p>Cada porta é um projeto. Arraste (ou use ← →) para girar e clique numa porta para entrar.</p>
+          <span className={styles.eyebrow}>// coleção permanente</span>
+          <h1>Museu Duarte</h1>
+          <p className={styles.long}>Cada sala guarda um projeto, uma escultura e uma obra de arte. Arraste (ou use ← →) para girar e clique num portal para entrar.</p>
+          <p className={styles.short}>Arraste para girar · toque num portal para entrar.</p>
           <a href="/portifolio" className={styles.link}>Prefere a versão em lista? Ver projetos <FiArrowRight /></a>
         </div>
       )}
@@ -92,11 +122,26 @@ export default function Experience() {
               <button onClick={() => step(1)} className={styles.btn} aria-label="Próxima sala"><FiArrowRight /></button>
             </div>
           </div>
-          <div className={styles.roomFoot}>
-            <button onClick={() => setDetails(true)} className={styles.btnPrimary} style={{ background: room.color }}>Ler o mural completo</button>
-            <a href={room.url} target="_blank" rel="noreferrer" className={styles.btn}>Ver repositório <FiExternalLink /></a>
-            <span className={styles.hint}>arraste para olhar em volta</span>
-          </div>
+          {focused ? (
+            <div className={styles.caption}>
+              <div>
+                <strong>{focused.title}</strong>
+                <span>{focused.meta}</span>
+              </div>
+              <div className={styles.captionActions}>
+                {focused.kind === 'mural' && (
+                  <button onClick={() => setDetails(true)} className={styles.btnPrimary} style={{ background: room.color }}>Ler o mural completo</button>
+                )}
+                <button onClick={() => setFocusId(null)} className={styles.btn}><FiArrowLeft /> Afastar (Esc)</button>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.roomFoot}>
+              <button onClick={() => setDetails(true)} className={styles.btnPrimary} style={{ background: room.color }}>Ler o mural completo</button>
+              <a href={room.url} target="_blank" rel="noreferrer" className={styles.btn}>Ver repositório <FiExternalLink /></a>
+              <span className={styles.hint}>arraste para olhar em volta · clique numa obra para se aproximar</span>
+            </div>
+          )}
         </>
       )}
 
@@ -127,4 +172,22 @@ export default function Experience() {
       </AnimatePresence>
     </div>
   )
+}
+
+export default function Experience() {
+  const [webgl] = useState(hasWebGL)
+  if (!webgl) {
+    return (
+      <div className={styles.stage}>
+        <div className={styles.hubHud} style={{ position: 'static', margin: '40px auto', pointerEvents: 'auto' }}>
+          <span className={styles.eyebrow}>// sem WebGL</span>
+          <h1>Museu indisponível</h1>
+          <p className={styles.long}>Seu navegador não conseguiu iniciar o 3D. Você ainda pode ver todos os projetos na versão em lista.</p>
+          <a href="/portifolio" className={styles.link}>Ver projetos <FiArrowRight /></a>
+        </div>
+      </div>
+    )
+  }
+
+  return <Museum />
 }

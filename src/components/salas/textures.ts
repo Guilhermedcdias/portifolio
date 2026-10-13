@@ -1,12 +1,5 @@
 import * as THREE from 'three'
-
-function fontFamily(): string {
-  try {
-    const v = getComputedStyle(document.body).getPropertyValue('--font-syne').trim()
-    if (v) return `${v}, system-ui, sans-serif`
-  } catch { /* ignora */ }
-  return 'system-ui, sans-serif'
-}
+import { GOLD, IVORY, SERIF } from './shared'
 
 function wrap(ctx: CanvasRenderingContext2D, text: string, maxWidth: number): string[] {
   const words = text.split(' ')
@@ -27,25 +20,50 @@ function toTexture(canvas: HTMLCanvasElement): THREE.CanvasTexture {
   return tex
 }
 
-/** Placa acima de cada porta do saguão */
-export function doorLabelTexture(num: number, title: string, color: string): THREE.CanvasTexture {
+function placardBase(w: number, h: number) {
   const c = document.createElement('canvas')
-  c.width = 512; c.height = 160
+  c.width = w; c.height = h
   const ctx = c.getContext('2d')!
-  ctx.fillStyle = 'rgba(8,11,16,0.92)'
-  ctx.fillRect(0, 0, c.width, c.height)
-  ctx.strokeStyle = color; ctx.lineWidth = 4
-  ctx.strokeRect(2, 2, c.width - 4, c.height - 4)
-  ctx.fillStyle = color
-  ctx.font = '600 26px monospace'
-  ctx.fillText(`SALA ${String(num).padStart(2, '0')}`, 24, 44)
-  ctx.fillStyle = '#e6edf3'
-  ctx.font = `700 32px ${fontFamily()}`
-  wrap(ctx, title, c.width - 48).slice(0, 2).forEach((l, i) => ctx.fillText(l, 24, 88 + i * 38))
+  ctx.fillStyle = IVORY; ctx.fillRect(0, 0, w, h)
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 6; ctx.strokeRect(8, 8, w - 16, h - 16)
+  ctx.strokeStyle = 'rgba(201,162,75,0.5)'; ctx.lineWidth = 2; ctx.strokeRect(20, 20, w - 40, h - 40)
+  return { c, ctx }
+}
+
+/** Placa de latão acima de cada portal do saguão */
+export function doorLabelTexture(num: number, title: string): THREE.CanvasTexture {
+  const { c, ctx } = placardBase(512, 190)
+  ctx.fillStyle = '#8a6a22'
+  ctx.font = `600 22px ${SERIF}`
+  ctx.textAlign = 'center'
+  ctx.fillText(`S A L A   ${String(num).padStart(2, '0')}`, 256, 62)
+  ctx.fillStyle = '#1b1712'
+  ctx.font = `700 32px ${SERIF}`
+  wrap(ctx, title, 430).slice(0, 2).forEach((l, i, a) => ctx.fillText(l, 256, (a.length > 1 ? 104 : 120) + i * 38))
   return toTexture(c)
 }
 
-/** Mural da parede de fundo de cada sala */
+/** Etiqueta de obra (ao lado de cada quadro / escultura) */
+export function placardTexture(opts: { title: string; meta: string; body?: string; w?: number; h?: number }): THREE.CanvasTexture {
+  const w = opts.w ?? 512, h = opts.h ?? 320
+  const { c, ctx } = placardBase(w, h)
+  ctx.fillStyle = '#1b1712'
+  ctx.font = `700 38px ${SERIF}`
+  const tl = wrap(ctx, opts.title, w - 80).slice(0, 2)
+  tl.forEach((l, i) => ctx.fillText(l, 40, 78 + i * 44))
+  let y = 78 + tl.length * 44 - 10
+  ctx.fillStyle = '#6b5a36'
+  ctx.font = `italic 400 25px ${SERIF}`
+  wrap(ctx, opts.meta, w - 80).slice(0, 2).forEach((l, i) => ctx.fillText(l, 40, y + 34 + i * 30))
+  if (opts.body) {
+    ctx.fillStyle = '#3b352a'
+    ctx.font = `400 22px ${SERIF}`
+    wrap(ctx, opts.body, w - 80).slice(0, 4).forEach((l, i) => ctx.fillText(l, 40, y + 110 + i * 28))
+  }
+  return toTexture(c)
+}
+
+/** Painel principal da sala (parede do fundo) */
 export function muralTexture(opts: {
   num: number; title: string; tagline: string; stack: string[]; descricao: string; color: string
 }): THREE.CanvasTexture {
@@ -53,50 +71,46 @@ export function muralTexture(opts: {
   const c = document.createElement('canvas')
   c.width = 1536; c.height = 864
   const ctx = c.getContext('2d')!
-  const fam = fontFamily()
 
-  ctx.fillStyle = '#0d1117'
+  ctx.fillStyle = '#0f1218'
   ctx.fillRect(0, 0, c.width, c.height)
   const g = ctx.createLinearGradient(0, 0, c.width, c.height)
-  g.addColorStop(0, color + '33'); g.addColorStop(1, 'transparent')
+  g.addColorStop(0, color + '40'); g.addColorStop(1, 'transparent')
   ctx.fillStyle = g
   ctx.fillRect(0, 0, c.width, c.height)
-  ctx.strokeStyle = color; ctx.lineWidth = 6
-  ctx.strokeRect(24, 24, c.width - 48, c.height - 48)
+  ctx.strokeStyle = GOLD; ctx.lineWidth = 3
+  ctx.strokeRect(40, 40, c.width - 80, c.height - 80)
 
+  ctx.fillStyle = GOLD
+  ctx.font = `500 30px ${SERIF}`
+  ctx.fillText(`SALA ${String(num).padStart(2, '0')}  ·  COLEÇÃO PERMANENTE`, 90, 110)
+
+  ctx.fillStyle = '#f1e9d6'
+  ctx.font = `700 78px ${SERIF}`
+  const tl = wrap(ctx, title, c.width - 180).slice(0, 2)
+  tl.forEach((l, i) => ctx.fillText(l, 90, 210 + i * 90))
+
+  let y = 210 + tl.length * 90
   ctx.fillStyle = color
-  ctx.font = '600 34px monospace'
-  ctx.fillText(`// sala ${String(num).padStart(2, '0')}`, 80, 100)
+  ctx.font = `italic 400 40px ${SERIF}`
+  ctx.fillText(tagline, 90, y)
 
-  ctx.fillStyle = '#e6edf3'
-  ctx.font = `800 82px ${fam}`
-  const tl = wrap(ctx, title, c.width - 160).slice(0, 2)
-  tl.forEach((l, i) => ctx.fillText(l, 80, 200 + i * 94))
+  y += 64
+  ctx.fillStyle = '#a9a496'
+  ctx.font = `400 32px ${SERIF}`
+  const short = descricao.length > 200 ? descricao.slice(0, 197).trimEnd() + '…' : descricao
+  wrap(ctx, short, c.width - 180).slice(0, 4).forEach((l, i) => ctx.fillText(l, 90, y + i * 44))
 
-  let y = 200 + tl.length * 94 + 10
-  ctx.fillStyle = color
-  ctx.font = `italic 500 40px ${fam}`
-  ctx.fillText(tagline, 80, y)
-
-  y += 70
-  ctx.fillStyle = '#8b949e'
-  ctx.font = '400 34px system-ui, sans-serif'
-  const short = descricao.length > 190 ? descricao.slice(0, 187).trimEnd() + '…' : descricao
-  wrap(ctx, short, c.width - 160).slice(0, 4).forEach((l, i) => ctx.fillText(l, 80, y + i * 46))
-
-  // chips de tecnologia
-  let x = 80; let cy = c.height - 130
-  ctx.font = '500 28px monospace'
+  let x = 90; let cy = c.height - 120
+  ctx.font = '500 26px monospace'
   for (const s of stack.slice(0, 9)) {
-    const w = ctx.measureText(s).width + 36
-    if (x + w > c.width - 80) { x = 80; cy += 56 }
-    if (cy > c.height - 70) break
-    ctx.fillStyle = color + '22'
-    ctx.fillRect(x, cy - 34, w, 46)
-    ctx.strokeStyle = color + '88'; ctx.lineWidth = 2
-    ctx.strokeRect(x, cy - 34, w, 46)
-    ctx.fillStyle = '#e6edf3'
-    ctx.fillText(s, x + 18, cy)
+    const w = ctx.measureText(s).width + 32
+    if (x + w > c.width - 90) { x = 90; cy += 52 }
+    if (cy > c.height - 66) break
+    ctx.strokeStyle = GOLD + 'aa'; ctx.lineWidth = 2
+    ctx.strokeRect(x, cy - 32, w, 44)
+    ctx.fillStyle = '#f1e9d6'
+    ctx.fillText(s, x + 16, cy)
     x += w + 14
   }
   return toTexture(c)
