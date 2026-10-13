@@ -16,7 +16,7 @@ const visuals: Record<string, Visual> = {
   '5':  { theme: 'plants',   color: '#84CC16', tagline: 'Tecnologia crescendo no campo' },
   '6':  { theme: 'chat',     color: '#25D366', tagline: 'Conversas que viram produto' },
   '7':  { theme: 'gear',     color: '#F97316', tagline: 'Oficina bem engrenada' },
-  '8':  { theme: 'cloud',    color: '#38BDF8', tagline: 'Arquitetura vista por IA' },
+  '8':  { theme: 'cloud',    color: '#38BDF8', tagline: 'Arquitetura que se explica sozinha' },
   '9':  { theme: 'scales',   color: '#EAB308', tagline: 'Presença digital com peso' },
   '10': { theme: 'paw',      color: '#EC4899', tagline: 'Tudo pelo pet' },
   '11': { theme: 'waves',    color: '#06B6D4', tagline: 'Mergulho no parque aquático' },

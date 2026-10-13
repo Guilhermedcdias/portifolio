@@ -6,18 +6,34 @@ export const ART_STYLES = [
 ] as const
 export type ArtStyle = typeof ART_STYLES[number]
 
-export const ART_TITLES: Record<ArtStyle, string> = {
-  mondrian: 'Composição em Grade',
-  rothko: 'Campo de Cor',
-  kandinsky: 'Círculos Concêntricos',
-  flow: 'Fluxo de Dados',
-  riley: 'Ondulação Óptica',
-  nebula: 'Nebulosa de Commits',
-  bauhaus: 'Arcos Modulares',
-  seurat: 'Tarde em Pixels',
-  pixel: 'Mosaico 8-bit',
-  topo: 'Curvas de Nível',
+const TITLES: Record<ArtStyle, string[]> = {
+  mondrian: ['Cidade em Grade', 'Mapa do Bairro Antigo', 'Janelas de Domingo', 'Planta Baixa de um Sonho', 'Quarteirão Azul', 'Persianas ao Meio-dia'],
+  rothko: ['Hora Dourada', 'Silêncio em Duas Cores', 'Maré Baixa', 'Porta para o Entardecer', 'Meditação nº 3', 'Horizonte de Âmbar'],
+  kandinsky: ['Ressonância', 'Órbitas de Verão', 'Música para os Olhos', 'Sino Distante', 'Confete Cósmico', 'Eco em Círculos'],
+  flow: ['Correnteza', 'Ventos de Outubro', 'Cabelos do Rio', 'Mapa dos Ventos', 'Seda em Movimento', 'Maré de Fios'],
+  riley: ['Vibração', 'Onda Contínua', 'Miragem', 'Corda Bamba', 'Zebra ao Entardecer', 'Febre Ótica'],
+  nebula: ['Berço das Estrelas', 'Jardim Interestelar', 'Noite em Saturno', 'Poeira de Cometa', 'Fronteira Lunar', 'Sonho de Astrônomo'],
+  bauhaus: ['Arcos e Quadrantes', 'Ateliê de Domingo', 'Oficina de Formas', 'Jogo de Blocos', 'Alfabeto Geométrico', 'Arquitetura Alegre'],
+  seurat: ['Tarde na Ilha', 'Piquenique ao Sol', 'Campos de Março', 'Verão em Pontos', 'Praia Pontilhada', 'Lago ao Meio-dia'],
+  pixel: ['Jardim de Azulejos', 'Vitral de Bolso', 'Ladrilhos de Inverno', 'Colcha de Retalhos', 'Tapete de Lisboa', 'Mosaico da Memória'],
+  topo: ['Relevo Íntimo', 'Cartografia de um Domingo', 'Colina Imaginária', 'Ilha dos Ventos', 'Curvas do Vale', 'Carta de Navegação'],
 }
+
+const TECHNIQUES: Record<ArtStyle, string> = {
+  mondrian: 'Acrílica sobre tela',
+  rothko: 'Óleo sobre linho',
+  kandinsky: 'Guache sobre papel',
+  flow: 'Nanquim sobre papel',
+  riley: 'Tinta acrílica sobre tela',
+  nebula: 'Óleo sobre tela',
+  bauhaus: 'Colagem sobre madeira',
+  seurat: 'Óleo sobre tela',
+  pixel: 'Esmalte sobre painel',
+  topo: 'Nanquim e aquarela',
+}
+
+export const artTitle = (style: ArtStyle, seed: number) => TITLES[style][seed % TITLES[style].length]
+export const artMeta = (style: ArtStyle, seed: number) => `${TECHNIQUES[style]}, ${1962 + (seed * 7) % 58}`
 
 type Ctx = CanvasRenderingContext2D
 type R = () => number

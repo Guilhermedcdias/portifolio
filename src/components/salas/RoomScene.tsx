@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useLayoutEffect, useMemo, useRef } from 'react'
 import { useFrame, useThree, type ThreeEvent } from '@react-three/fiber'
-import { Environment, Lightformer, MeshReflectorMaterial, Sparkles } from '@react-three/drei'
+import { Environment, Lightformer, MeshReflectorMaterial } from '@react-three/drei'
 import * as THREE from 'three'
 import type { Room } from './rooms'
 import { muralTexture, placardTexture } from './textures'
@@ -122,13 +122,13 @@ function Painting({ art, tex, plate, focused, onFocus }: {
         onPointerOut={() => { document.body.style.cursor = '' }}
       >
         <planeGeometry args={[art.w, art.h]} />
-        <meshBasicMaterial map={tex} toneMapped={false} />
+        <meshBasicMaterial map={tex} toneMapped={false} polygonOffset polygonOffsetFactor={-2} polygonOffsetUnits={-2} />
       </mesh>
       <PictureLight w={art.w} h={art.h} />
       {plate && (
-        <mesh position={[art.w / 2 + 0.75, -0.12, 0.01]}>
-          <planeGeometry args={[0.6, 0.375]} />
-          <meshBasicMaterial map={plate} toneMapped={false} />
+        <mesh position={[art.plateSide * (art.w / 2 + 0.88), -0.12, 0.01]}>
+          <planeGeometry args={[0.74, 0.46]} />
+          <meshBasicMaterial map={plate} toneMapped={false} polygonOffset polygonOffsetFactor={-2} polygonOffsetUnits={-2} />
         </mesh>
       )}
     </group>
@@ -143,6 +143,7 @@ export default function RoomScene({ room, focusId, onFocus, onOpenDetails, onLea
   onLeave: () => void
 }) {
   const lite = useThree((st) => st.size.width < 700)
+  const maxAniso = useThree((st) => st.gl.capabilities.getMaxAnisotropy())
   const layout = useMemo(() => buildLayout(room), [room])
   const palette = useMemo(() => artPalette(room.color), [room])
   const tint = useMemo(() => wallTint(room.color), [room])
@@ -155,14 +156,16 @@ export default function RoomScene({ room, focusId, onFocus, onOpenDetails, onLea
       if (a.kind === 'mural') {
         art.set(a.id, muralTexture({ num: room.index + 1, title: room.title, tagline: room.tagline, stack: room.stack, descricao: room.descricao, color: room.color }))
       } else {
-        art.set(a.id, paintArt(a.style!, a.seed, palette, a.w / a.h))
+        art.set(a.id, paintArt(a.style!, a.seed, palette, a.w / a.h, 1400))
         plate.set(a.id, placardTexture({ title: a.title, meta: a.meta, w: 480, h: 300 }))
       }
     })
     const sculpture = placardTexture({ title: room.title, meta: `Instalação cinética · ${room.stack.slice(0, 3).join(', ')}`, body: room.tagline, w: 560, h: 380 })
     const exit = placardTexture({ title: 'Voltar ao saguão', meta: 'Clique na porta', w: 520, h: 190 })
+    const all: THREE.Texture[] = [...art.values(), ...plate.values(), sculpture, exit]
+    all.forEach((t) => { t.anisotropy = maxAniso; t.minFilter = THREE.LinearMipmapLinearFilter; t.generateMipmaps = true })
     return { art, plate, sculpture, exit }
-  }, [layout, palette, room])
+  }, [layout, palette, room, maxAniso])
   useEffect(() => () => {
     textures.art.forEach(t => t.dispose()); textures.plate.forEach(t => t.dispose())
     textures.sculpture.dispose(); textures.exit.dispose()
@@ -285,8 +288,6 @@ export default function RoomScene({ room, focusId, onFocus, onOpenDetails, onLea
         <mesh position={[0, 4.35, 0.02]}><planeGeometry args={[2.2, 0.8]} /><meshBasicMaterial map={textures.exit} toneMapped={false} /></mesh>
         <mesh position={[0, 4.35, -0.01]}><boxGeometry args={[2.28, 0.88, 0.04]} /><Gold /></mesh>
       </group>
-
-      <Sparkles count={40} scale={[W - 2, H - 1, D - 2]} position={[0, H / 2, 0]} size={1.6} speed={0.12} color="#ffe9bf" opacity={0.5} />
     </>
   )
 }

@@ -48,10 +48,11 @@ export function placardTexture(opts: { title: string; meta: string; body?: strin
   const w = opts.w ?? 512, h = opts.h ?? 320
   const { c, ctx } = placardBase(w, h)
   ctx.fillStyle = '#1b1712'
-  ctx.font = `700 38px ${SERIF}`
-  const tl = wrap(ctx, opts.title, w - 80).slice(0, 2)
-  tl.forEach((l, i) => ctx.fillText(l, 40, 78 + i * 44))
-  let y = 78 + tl.length * 44 - 10
+  const size = opts.title.length > 34 ? 30 : 38
+  ctx.font = `700 ${size}px ${SERIF}`
+  const tl = wrap(ctx, opts.title, w - 80).slice(0, 3)
+  tl.forEach((l, i) => ctx.fillText(l, 40, 70 + i * (size + 6)))
+  let y = 70 + tl.length * (size + 6) - 16
   ctx.fillStyle = '#6b5a36'
   ctx.font = `italic 400 25px ${SERIF}`
   wrap(ctx, opts.meta, w - 80).slice(0, 2).forEach((l, i) => ctx.fillText(l, 40, y + 34 + i * 30))

@@ -74,7 +74,7 @@ function Museum() {
     <div className={styles.stage}>
       <Canvas
         dpr={[1, 1.5]}
-        camera={{ fov: 65, near: 0.1, far: 80, position: [0, 1.7, 0] }}
+        camera={{ fov: 65, near: 0.25, far: 70, position: [0, 1.7, 0] }}
         shadows
         gl={{ antialias: true }}
       >
