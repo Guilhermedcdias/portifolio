@@ -7,6 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 const navLinks = [
   { href: '/curriculo', label: 'Currículo' },
   { href: '/portifolio', label: 'Projetos' },
+  { href: '/salas', label: 'Explorar 3D' },
   { href: '/contato', label: 'Contato' },
 ];
 
